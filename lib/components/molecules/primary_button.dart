@@ -1,33 +1,29 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-class FingerprintLogin extends StatefulWidget {
+class PrimaryButton extends StatefulWidget {
   final String title;
   final String subtitle;
   final String imagePath;
   final double width;
   final double height;
-  final double blur;
-  final double opacity;
   final VoidCallback? onTap;
 
-  const FingerprintLogin({
+  const PrimaryButton({
     super.key,
     this.title = "Login with Fingerprint",
     this.subtitle = "",
     this.imagePath = "",
     this.width = 380,
     this.height = 56,
-    this.blur = 0,
-    this.opacity = 1.0,
     this.onTap,
   });
 
   @override
-  State<FingerprintLogin> createState() => _FingerprintLoginState();
+  State<PrimaryButton> createState() => _PrimaryButtonState();
 }
 
-class _FingerprintLoginState extends State<FingerprintLogin> {
+class _PrimaryButtonState extends State<PrimaryButton> {
   bool _isPressed = false;
 
   @override

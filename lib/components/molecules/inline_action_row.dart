@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import '../atoms/glass_card.dart';
 
-class Login extends StatelessWidget {
+class InlineActionRow extends StatelessWidget {
   final VoidCallback? onMPINLogin;
   final VoidCallback? onForgotMPIN;
 
-  const Login({
+  const InlineActionRow({
     super.key,
     this.onMPINLogin,
     this.onForgotMPIN,

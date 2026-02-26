@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-class QRScan extends StatelessWidget {
+class Scan extends StatelessWidget {
   final String title;
   final String subtitle;
   final String popupTitle;
@@ -16,16 +16,16 @@ class QRScan extends StatelessWidget {
   final double opacity;
   final VoidCallback? onTap;
 
-  const QRScan({
+  const Scan({
     super.key,
     required this.title,
     this.subtitle = "",
-    this.popupTitle = "Scan QR Code",
+    this.popupTitle = "Scan Code",
     this.qrData = "",
     this.imagePath,
     this.icon = Icons.qr_code_2,
-    this.accentColor = Colors.black54,
-    this.textColor = Colors.white,
+    this.accentColor = const Color(0xFF1E3A8A),
+    this.textColor = const Color(0xFF1E3A8A),
     this.width = 484,
     this.height = 180,
     this.blur = 15,

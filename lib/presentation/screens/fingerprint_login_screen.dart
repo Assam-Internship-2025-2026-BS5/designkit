@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import '../../components/molecules/fingerprint_login.dart';
+import '../../components/molecules/primary_button.dart';
 
 class FingerprintLoginScreen extends StatefulWidget {
   const FingerprintLoginScreen({super.key});
@@ -19,7 +19,7 @@ class _FingerprintLoginScreenState extends State<FingerprintLoginScreen> {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 114, 137, 192),
       body: Center(
-        child: FingerprintLogin(
+        child: PrimaryButton(
           title: "Goodbye, Secure Text & Image",
           subtitle: "Hello, Digicert Security",
           imagePath: "assets/lock.png",

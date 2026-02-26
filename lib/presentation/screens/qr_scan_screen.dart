@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../components/molecules/qr_scan.dart';
+import '../../components/molecules/scan.dart';
 
 class QRScanScreen extends StatelessWidget {
   const QRScanScreen({super.key});
@@ -9,8 +9,8 @@ class QRScanScreen extends StatelessWidget {
     return const Scaffold(
       backgroundColor: Color(0xFF7289C0),
       body: Center(
-        child: QRScan(
-          title: "QR Scan",
+        child: Scan(
+          title: "Scan",
           subtitle: "",
           imagePath: "assets/Qr_scan.png",
           popupTitle: "Scan to Login",

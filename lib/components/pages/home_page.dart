@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import '../organisms/header.dart';
 import '../organisms/bottom_nav.dart';
 import '../molecules/action_items.dart';
-import '../molecules/fingerprint_login.dart';
-import '../molecules/qr_scan.dart';
-import '../molecules/login.dart';
+import '../molecules/primary_button.dart';
+import '../molecules/scan.dart';
+import '../molecules/inline_action_row.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -71,11 +71,11 @@ class HomePage extends StatelessWidget {
                                 const SizedBox(height: 30),
                                 Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 16),
-                                  child: FingerprintLogin(
+                                  child: PrimaryButton(
                                     onTap: () => debugPrint("Fingerprint Login Tapped"),
                                   ),
                                 ),
-                                Login(
+                                InlineActionRow(
                                   onMPINLogin: () => debugPrint("mPIN Login Tapped"),
                                   onForgotMPIN: () => debugPrint("Forgot mPIN Tapped"),
                                 ),
@@ -106,12 +106,12 @@ class HomePage extends StatelessWidget {
                                     ],
                                     border: Border.all(color: Colors.white, width: 3),
                                   ),
-                                  child: const QRScan(
-                                    title: "QR Scan",
+                                  child: const Scan(
+                                    title: "Scan",
                                     imagePath: "assets/Qr_scan.png",
                                     width: 130,
                                     height: 130,
-                                    textColor: Color(0xFF1F2937), // Neat dark grey text
+                                    textColor: Color(0xFF1E3A8A), // Using the deep blue for visibility
                                   ),
                                 ),
                               ),
