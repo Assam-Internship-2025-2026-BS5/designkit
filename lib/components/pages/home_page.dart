@@ -22,6 +22,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
         child: SafeArea(
+          bottom: false,
           child: Column(
             children: [
               Expanded(
@@ -123,12 +124,12 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              BottomNav(
-                onNavTap: (label) => debugPrint("Navigation Tapped: $label"),
-              ),
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNav(
+        onNavTap: (label) => debugPrint("Navigation Tapped: $label"),
       ),
     );
   }

@@ -29,17 +29,24 @@ class Header extends StatelessWidget {
               // Logo
               GestureDetector(
                 onTap: () => debugPrint("Logo Tapped"),
-                child: Image.asset(
-                  logoPath,
-                  height: 35,
+                child: SizedBox(
+                  width: 150, // Constrain the width to avoid 70% screen usage
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Image.asset(
+                      logoPath,
+                      height: 22, // Smaller height
+                      fit: BoxFit.contain,
+                    ),
+                  ),
                 ),
               ),
               // Notification Icon
               GestureDetector(
                 onTap: onNotificationTap,
                 child: Container(
-                  width: 45,
-                  height: 45,
+                  width: 38,
+                  height: 38,
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     gradient: LinearGradient(
@@ -51,7 +58,7 @@ class Header extends StatelessWidget {
                   child: const Icon(
                     Icons.notifications_none_outlined,
                     color: Colors.white,
-                    size: 28,
+                    size: 22,
                   ),
                 ),
               ),
@@ -68,14 +75,14 @@ class Header extends StatelessWidget {
                 Text(
                   "Hello,",
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 14,
                     color: Colors.black.withOpacity(0.7),
                   ),
                 ),
                 Text(
                   userName.toUpperCase(),
                   style: const TextStyle(
-                    fontSize: 22,
+                    fontSize: 18,
                     fontWeight: FontWeight.w900,
                     color: Colors.black,
                   ),
@@ -86,13 +93,13 @@ class Header extends StatelessWidget {
                     Text(
                       "Cust ID $customerId",
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 13,
                         color: Colors.black.withOpacity(0.6),
                       ),
                     ),
                     const Icon(
                       Icons.keyboard_arrow_down,
-                      size: 20,
+                      size: 16,
                       color: Colors.black54,
                     ),
                   ],
