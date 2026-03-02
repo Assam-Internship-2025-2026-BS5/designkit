@@ -12,7 +12,7 @@ class TextField extends m.StatefulWidget {
   final m.Color textColor;
   final m.FontWeight fontWeight;
   final double borderRadius;
-  final m.Color fillColor;
+  final Color fillColor;
 
   const TextField({
     super.key,
@@ -24,7 +24,7 @@ class TextField extends m.StatefulWidget {
     this.textColor = const m.Color.fromARGB(255, 0, 0, 0),
     this.fontWeight = m.FontWeight.w500,
     this.borderRadius = 30,
-    this.fillColor = const m.Color(0x1FFFFFFF),
+    this.fillColor = const m.Color(0xFFE2E8F0),
   });
 
   @override
@@ -59,50 +59,44 @@ class _TextFieldState extends m.State<TextField> {
           m.MouseRegion(
             onEnter: (_) => setState(() => _isHovering = true),
             onExit: (_) => setState(() => _isHovering = false),
-            child: m.ClipRRect(
-              borderRadius: m.BorderRadius.circular(widget.borderRadius),
-              child: m.BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
-                child: m.AnimatedContainer(
-                  duration: const Duration(milliseconds: 150),
-                  decoration: m.BoxDecoration(
-                    color: _isHovering
-                        ? widget.fillColor.withOpacity(0.2)
-                        : widget.fillColor.withOpacity(0.1),
-                    borderRadius: m.BorderRadius.circular(widget.borderRadius),
-                    border: m.Border.all(
-                      color: hasError
-                          ? m.Colors.red.withOpacity(0.5)
-                          : widget.fillColor.withOpacity(0.3),
-                      width: 1.5,
-                    ),
+            child: m.AnimatedContainer(
+              duration: const Duration(milliseconds: 150),
+              decoration: m.BoxDecoration(
+                color: _isHovering
+                    ? widget.fillColor.withOpacity(0.9)
+                    : widget.fillColor,
+                borderRadius: m.BorderRadius.circular(widget.borderRadius),
+                border: m.Border.all(
+                  color: hasError
+                      ? m.Colors.red.withOpacity(0.5)
+                      : widget.fillColor.withOpacity(0.3),
+                  width: 1.5,
+                ),
+              ),
+              child: m.TextField(
+                controller: _controller,
+                obscureText: false,
+                inputFormatters: widget.inputFormatters,
+                onChanged: _validate,
+                textAlign: m.TextAlign.center,
+                style: m.TextStyle(
+                  fontSize: widget.fontSize,
+                  color: widget.textColor,
+                  fontWeight: widget.fontWeight,
+                ),
+                textAlignVertical: m.TextAlignVertical.center,
+                decoration: m.InputDecoration(
+                  counterText: "",
+                  hintText: widget.hintText,
+                  hintStyle: m.TextStyle(
+                    color: widget.textColor.withOpacity(0.7),
+                    fontSize: widget.fontSize - 2,
                   ),
-                  child: m.TextField(
-                    controller: _controller,
-                    obscureText: false,
-                    inputFormatters: widget.inputFormatters,
-                    onChanged: _validate,
-                    textAlign: m.TextAlign.center,
-                    style: m.TextStyle(
-                      fontSize: widget.fontSize,
-                      color: widget.textColor,
-                      fontWeight: widget.fontWeight,
-                    ),
-                    textAlignVertical: m.TextAlignVertical.center,
-                    decoration: m.InputDecoration(
-                      counterText: "",
-                      hintText: widget.hintText,
-                      hintStyle: m.TextStyle(
-                        color: widget.textColor.withOpacity(0.4),
-                        fontSize: widget.fontSize - 2,
-                      ),
-                      contentPadding: const m.EdgeInsets.symmetric(
-                        horizontal: 24,
-                        vertical: 16,
-                      ),
-                      border: m.InputBorder.none,
-                    ),
+                  contentPadding: const m.EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 16,
                   ),
+                  border: m.InputBorder.none,
                 ),
               ),
             ),
