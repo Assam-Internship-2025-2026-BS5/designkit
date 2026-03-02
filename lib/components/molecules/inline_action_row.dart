@@ -4,11 +4,17 @@ import '../atoms/glass_card.dart';
 class InlineActionRow extends StatelessWidget {
   final VoidCallback? onMPINLogin;
   final VoidCallback? onForgotMPIN;
+  final String mpinText;
+  final String forgotMpinText;
+  final Color textColor;
 
   const InlineActionRow({
     super.key,
     this.onMPINLogin,
     this.onForgotMPIN,
+    this.mpinText = "Or, login with mPIN",
+    this.forgotMpinText = "Forgot mPIN?",
+    this.textColor = const Color(0xFF1565C0),
   });
 
   @override
@@ -26,10 +32,10 @@ class InlineActionRow extends StatelessWidget {
             showShadow: false,
             child: GestureDetector(
               onTap: onMPINLogin,
-              child: const Text(
-                "Or, login with mPIN",
+              child: Text(
+                mpinText,
                 style: TextStyle(
-                  color: Color(0xFF1565C0), // Primary blue
+                  color: textColor,
                   fontWeight: FontWeight.w600,
                   fontSize: 13,
                 ),
@@ -45,10 +51,10 @@ class InlineActionRow extends StatelessWidget {
             showShadow: false,
             child: GestureDetector(
               onTap: onForgotMPIN,
-              child: const Text(
-                "Forgot mPIN?",
+              child: Text(
+                forgotMpinText,
                 style: TextStyle(
-                  color: Color(0xFF1565C0), // Primary blue
+                  color: textColor,
                   fontWeight: FontWeight.w600,
                   fontSize: 13,
                 ),

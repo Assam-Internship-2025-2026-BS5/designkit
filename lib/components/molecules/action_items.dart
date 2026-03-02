@@ -42,9 +42,12 @@ class _ActionItemsState extends State<ActionItems> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: List.generate(displayItems.length, (index) {
-          return _buildActionTile(displayItems[index], index);
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: _buildActionTile(displayItems[index], index),
+          );
         }),
       ),
     );
