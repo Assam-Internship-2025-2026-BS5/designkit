@@ -7,10 +7,15 @@ class Button extends StatefulWidget {
   final double height;
   final String text;
   final bool disabled;
-  final Color color;
+  final Color buttonColor;
   final bool showOutline;
   final double blur;
   final double opacity;
+
+  final Color textColor;
+  final double fontSize;
+  final FontWeight fontWeight;
+  final double borderRadius;
 
   const Button({
     super.key,
@@ -19,10 +24,14 @@ class Button extends StatefulWidget {
     this.height = 61,
     this.text = "Know More",
     this.disabled = false,
-    this.color = const Color(0xFF5371F9),
+    this.buttonColor = const Color(0xFF5371F9),
     this.showOutline = true,
     this.blur = 10,
     this.opacity = 0.3,
+    this.textColor = Colors.white,
+    this.fontSize = 22,
+    this.fontWeight = FontWeight.w600,
+    this.borderRadius = 20,
   });
 
   @override
@@ -80,7 +89,7 @@ class _ButtonState extends State<Button>
         child: ScaleTransition(
           scale: _scaleAnimation,
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(widget.borderRadius),
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: widget.blur, sigmaY: widget.blur),
               child: Container(
@@ -89,13 +98,13 @@ class _ButtonState extends State<Button>
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      widget.color.withOpacity(widget.opacity),
-                      const Color(0xFFB9C1E3).withOpacity(0.1),
+                      widget.buttonColor.withOpacity(widget.opacity),
+                      widget.buttonColor.withOpacity(widget.opacity * 0.5),
                     ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(widget.borderRadius),
                   border: widget.showOutline
                       ? Border.all(
                           color: Colors.white.withOpacity(0.2),
@@ -113,10 +122,10 @@ class _ButtonState extends State<Button>
                 alignment: Alignment.center,
                 child: Text(
                   widget.text,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 22,
-                    fontWeight: FontWeight.w600,
+                  style: TextStyle(
+                    color: widget.textColor,
+                    fontSize: widget.fontSize,
+                    fontWeight: widget.fontWeight,
                     letterSpacing: 0.5,
                   ),
                 ),

@@ -5,8 +5,10 @@ class PrimaryButton extends StatefulWidget {
   final String title;
   final String subtitle;
   final String imagePath;
+  final IconData icon;
   final double width;
   final double height;
+  final List<Color>? gradientColors;
   final VoidCallback? onTap;
 
   const PrimaryButton({
@@ -14,8 +16,10 @@ class PrimaryButton extends StatefulWidget {
     this.title = "Login with Fingerprint",
     this.subtitle = "",
     this.imagePath = "",
+    this.icon = Icons.fingerprint,
     this.width = 380,
     this.height = 56,
+    this.gradientColors,
     this.onTap,
   });
 
@@ -41,8 +45,8 @@ class _PrimaryButtonState extends State<PrimaryButton> {
           height: widget.height,
           padding: const EdgeInsets.symmetric(horizontal: 24),
           decoration: BoxDecoration(
-            gradient: const LinearGradient(
-              colors: [Color(0xFF004C8F), Color(0xFF003366)],
+            gradient: LinearGradient(
+              colors: widget.gradientColors ?? [const Color(0xFF004C8F), const Color(0xFF003366)],
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
             ),
@@ -67,11 +71,23 @@ class _PrimaryButtonState extends State<PrimaryButton> {
                 ),
               ),
               const SizedBox(width: 12),
-              const Icon(
-                Icons.fingerprint,
-                color: Colors.white,
-                size: 28,
-              ),
+              widget.imagePath.isNotEmpty
+                  ? Image.asset(
+                      widget.imagePath,
+                      width: 28,
+                      height: 28,
+                      color: Colors.white,
+                      errorBuilder: (context, error, stackTrace) => Icon(
+                        widget.icon,
+                        color: Colors.white,
+                        size: 28,
+                      ),
+                    )
+                  : Icon(
+                      widget.icon,
+                      color: Colors.white,
+                      size: 28,
+                    ),
             ],
           ),
         ),

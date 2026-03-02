@@ -8,6 +8,12 @@ class TextField extends m.StatefulWidget {
   final List<TextInputFormatter>? inputFormatters;
   final double? width;
 
+  final double fontSize;
+  final m.Color textColor;
+  final m.FontWeight fontWeight;
+  final double borderRadius;
+  final m.Color fillColor;
+
   const TextField({
     super.key,
     required this.hintText,
@@ -15,6 +21,11 @@ class TextField extends m.StatefulWidget {
     this.maxLength,
     this.inputFormatters,
     this.width,
+    this.fontSize = 22,
+    this.textColor = const m.Color.fromARGB(255, 0, 0, 0),
+    this.fontWeight = m.FontWeight.w500,
+    this.borderRadius = 30,
+    this.fillColor = const m.Color(0x1FFFFFFF),
   });
 
   @override
@@ -53,9 +64,9 @@ class _TextFieldState extends m.State<TextField> {
               duration: const Duration(milliseconds: 150),
               decoration: m.BoxDecoration(
                 color: _isHovering
-                    ? const m.Color.fromARGB(255, 27, 27, 27).withOpacity(0.05)
-                    : const m.Color(0x1FFFFFFF),
-                borderRadius: m.BorderRadius.circular(30), // Pill shape
+                    ? widget.fillColor.withOpacity(0.05)
+                    : widget.fillColor,
+                borderRadius: m.BorderRadius.circular(widget.borderRadius), // Pill shape
                 border: m.Border.all(
                   color: hasError ? m.Colors.red : m.Colors.white.withOpacity(0.8),
                   width: 1.5,
@@ -67,18 +78,18 @@ class _TextFieldState extends m.State<TextField> {
                 maxLength: widget.maxLength,
                 inputFormatters: widget.inputFormatters,
                 onChanged: _validate,
-                style: const m.TextStyle(
-                  fontSize: 22,
-                  color: m.Color.fromARGB(255, 0, 0, 0),
-                  fontWeight: m.FontWeight.w500,
+                style: m.TextStyle(
+                  fontSize: widget.fontSize,
+                  color: widget.textColor,
+                  fontWeight: widget.fontWeight,
                 ),
                 textAlignVertical: m.TextAlignVertical.center,
                 decoration: m.InputDecoration(
                   counterText: "",
                   hintText: widget.hintText,
                   hintStyle: m.TextStyle(
-                    color: const m.Color.fromARGB(255, 0, 0, 0).withOpacity(0.5),
-                    fontSize: 20,
+                    color: widget.textColor.withOpacity(0.5),
+                    fontSize: widget.fontSize - 2,
                   ),
                   contentPadding: const m.EdgeInsets.symmetric(
                     horizontal: 24,

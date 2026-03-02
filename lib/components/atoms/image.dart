@@ -7,6 +7,9 @@ class Image extends m.StatelessWidget {
   final double offsetY;
   final bool showShadow;
 
+  final String firstImagePath;
+  final String secondImagePath;
+
   const Image({
     super.key,
     this.width = 240.0,
@@ -14,6 +17,8 @@ class Image extends m.StatelessWidget {
     this.offsetX = 0.0,
     this.offsetY = 0.0,
     this.showShadow = false,
+    this.firstImagePath = 'assets/hdfc_logo.png',
+    this.secondImagePath = 'assets/now_logo.png',
   });
 
   @override
@@ -46,7 +51,7 @@ class Image extends m.StatelessWidget {
               crossAxisAlignment: m.CrossAxisAlignment.center,
               children: [
                 m.Image.asset(
-                  'assets/hdfc_logo.png',
+                  firstImagePath,
                   height: 31.0,
                   fit: m.BoxFit.contain,
                   errorBuilder: (context, error, stackTrace) =>
@@ -54,7 +59,7 @@ class Image extends m.StatelessWidget {
                 ),
                 const m.SizedBox(width: 20),
                 m.Image.asset(
-                  'assets/now_logo.png',
+                  secondImagePath,
                   height: 26.0,
                   fit: m.BoxFit.contain,
                   errorBuilder: (context, error, stackTrace) =>
