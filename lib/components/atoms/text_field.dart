@@ -6,6 +6,7 @@ class TextField extends m.StatefulWidget {
   final String hintText;
   final String? Function(String)? validator;
   final List<TextInputFormatter>? inputFormatters;
+  final int? maxLength;
   final double? width;
 
   final double fontSize;
@@ -19,6 +20,7 @@ class TextField extends m.StatefulWidget {
     required this.hintText,
     this.validator,
     this.inputFormatters,
+    this.maxLength,
     this.width,
     this.fontSize = 22,
     this.textColor = const m.Color.fromARGB(255, 0, 0, 0),
@@ -77,6 +79,7 @@ class _TextFieldState extends m.State<TextField> {
                 controller: _controller,
                 obscureText: false,
                 inputFormatters: widget.inputFormatters,
+                maxLength: widget.maxLength,
                 onChanged: _validate,
                 textAlign: m.TextAlign.center,
                 style: m.TextStyle(

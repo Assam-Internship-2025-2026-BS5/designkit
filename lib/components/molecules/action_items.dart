@@ -45,7 +45,7 @@ class _ActionItemsState extends State<ActionItems> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: List.generate(displayItems.length, (index) {
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             child: _buildActionTile(displayItems[index], index),
           );
         }),
@@ -68,7 +68,7 @@ class _ActionItemsState extends State<ActionItems> {
           clipBehavior: Clip.none,
           children: [
             Container(
-              width: 105,
+              width: 100,
               height: 130, // Uniform height for all tiles
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.9),
