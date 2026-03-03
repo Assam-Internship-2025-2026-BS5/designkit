@@ -12,6 +12,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true, // Allow body content to flow behind BottomNav
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -26,23 +27,21 @@ class HomePage extends StatelessWidget {
           child: Column(
             children: [
               Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
+                child: Column(
+                  children: [
                       Header(
                         onNotificationTap: () => debugPrint("Notification Tapped"),
                         onProfileTap: () => debugPrint("Profile/Customer ID Tapped"),
                       ),
-                      const SizedBox(height: 100), // Space for floating QR Scan
+                      const SizedBox(height: 80), // Reduced space for floating QR
                       // Features Section Re-integrated
                       Stack(
                         clipBehavior: Clip.none,
                         children: [
                           Container(
                             width: double.infinity,
-                            constraints: const BoxConstraints(minHeight: 400),
                             decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.5),
+                              color: Colors.white.withOpacity(0.9), // More opaque white for the card
                               borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(40),
                                 topRight: Radius.circular(40),
@@ -65,11 +64,11 @@ class HomePage extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 30),
+                                const SizedBox(height: 15),
                                 ActionItems(
                                   onItemTap: (item) => debugPrint("Action Tapped: ${item.title}"),
                                 ),
-                                const SizedBox(height: 30),
+                                const SizedBox(height: 15),
                                 Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 16),
                                   child: PrimaryButton(
@@ -80,7 +79,7 @@ class HomePage extends StatelessWidget {
                                   onMPINLogin: () => debugPrint("mPIN Login Tapped"),
                                   onForgotMPIN: () => debugPrint("Forgot mPIN Tapped"),
                                 ),
-                                const SizedBox(height: 20),
+                                const SizedBox(height: 60), // Reduced gap to pull content closer
                               ],
                             ),
                           ),
@@ -120,8 +119,7 @@ class HomePage extends StatelessWidget {
                           ),
                         ],
                       ),
-                    ],
-                  ),
+                  ],
                 ),
               ),
             ],
@@ -129,6 +127,7 @@ class HomePage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNav(
+        backgroundColor: Colors.white.withOpacity(0.9), // Match the main card opacity
         onNavTap: (label) => debugPrint("Navigation Tapped: $label"),
       ),
     );

@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class BottomNav extends StatelessWidget {
@@ -12,7 +13,7 @@ class BottomNav extends StatelessWidget {
     this.onNavTap,
     this.items,
     this.backgroundColor = Colors.white,
-    this.activeColor = const Color(0xFF004C8F),
+    this.activeColor = const Color(0xFF003366),
     this.inactiveColor = const Color(0xFF4B5563),
   });
 
@@ -27,8 +28,10 @@ class BottomNav extends StatelessWidget {
     final displayItems = items ?? defaultItems;
 
     return Container(
-      color: backgroundColor,
-      padding: const EdgeInsets.symmetric(vertical: 12),
+      decoration: BoxDecoration(
+        color: backgroundColor,
+      ),
+      padding: const EdgeInsets.only(top: 10, bottom: 50), // Lifted icons even higher
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: displayItems.map((item) => _buildBottomNavItem(item)).toList(),
@@ -46,8 +49,8 @@ class BottomNav extends StatelessWidget {
           Text(
             item.label,
             style: TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.w600,
+              fontSize: 12, // Slightly smaller label
+              fontWeight: FontWeight.w500, // Medium for better readability
               color: inactiveColor,
             ),
           ),

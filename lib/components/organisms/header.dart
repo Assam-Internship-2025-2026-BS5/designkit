@@ -24,41 +24,20 @@ class Header extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               // Logo
               GestureDetector(
                 onTap: () => debugPrint("Logo Tapped"),
                 child: SizedBox(
-                  width: 150, // Constrain the width to avoid 70% screen usage
+                  width: 150,
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Image.asset(
                       logoPath,
-                      height: 22, // Smaller height
+                      height: 22,
                       fit: BoxFit.contain,
                     ),
-                  ),
-                ),
-              ),
-              // Notification Icon
-              GestureDetector(
-                onTap: onNotificationTap,
-                child: Container(
-                  width: 38,
-                  height: 38,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    gradient: LinearGradient(
-                      colors: [Color(0xFFF97316), Color(0xFFFACC15)],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                  ),
-                  child: const Icon(
-                    Icons.notifications_none_outlined,
-                    color: Colors.white,
-                    size: 22,
                   ),
                 ),
               ),
@@ -79,13 +58,40 @@ class Header extends StatelessWidget {
                     color: Colors.black.withOpacity(0.7),
                   ),
                 ),
-                Text(
-                  userName.toUpperCase(),
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w900,
-                    color: Colors.black,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      userName.toUpperCase(),
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w900,
+                        color: Colors.black,
+                      ),
+                    ),
+                    // Notification Icon moved here
+                    GestureDetector(
+                      onTap: onNotificationTap,
+                      child: Container(
+                        width: 38,
+                        height: 38,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: LinearGradient(
+                            colors: [Color(0xFFF97316), Color(0xFFFACC15)],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                        ),
+                        child: const Icon(
+                          Icons.notifications_none_outlined,
+                          color: Colors.white,
+                          size: 22,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 8),
                 Row(
