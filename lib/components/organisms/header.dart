@@ -45,70 +45,78 @@ class Header extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           // User Info
+          // Hello line
           GestureDetector(
             onTap: onProfileTap,
             behavior: HitTestBehavior.opaque,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Hello,",
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black.withOpacity(0.7),
+            child: Text(
+              "Hello,",
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.black.withOpacity(0.7),
+              ),
+            ),
+          ),
+          // Name and Notification Row
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
+                child: GestureDetector(
+                  onTap: onProfileTap,
+                  behavior: HitTestBehavior.opaque,
+                  child: Text(
+                    userName.toUpperCase(),
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w900,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      userName.toUpperCase(),
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w900,
-                        color: Colors.black,
-                      ),
+              ),
+              // Notification Icon
+              GestureDetector(
+                onTap: onNotificationTap,
+                child: Container(
+                  width: 38,
+                  height: 38,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: LinearGradient(
+                      colors: [Color(0xFFF97316), Color(0xFFFACC15)],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
                     ),
-                    // Notification Icon moved here
-                    GestureDetector(
-                      onTap: onNotificationTap,
-                      child: Container(
-                        width: 38,
-                        height: 38,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          gradient: LinearGradient(
-                            colors: [Color(0xFFF97316), Color(0xFFFACC15)],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                        ),
-                        child: const Icon(
-                          Icons.notifications_none_outlined,
-                          color: Colors.white,
-                          size: 22,
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
+                  child: const Icon(
+                    Icons.notifications_none_outlined,
+                    color: Colors.white,
+                    size: 22,
+                  ),
                 ),
-                const SizedBox(height: 8),
-                Row(
-                  children: [
-                    Text(
-                      "Cust ID $customerId",
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: Colors.black.withOpacity(0.6),
-                      ),
-                    ),
-                    const Icon(
-                      Icons.keyboard_arrow_down,
-                      size: 16,
-                      color: Colors.black54,
-                    ),
-                  ],
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          // Cust ID line
+          GestureDetector(
+            onTap: onProfileTap,
+            behavior: HitTestBehavior.opaque,
+            child: Row(
+              children: [
+                Text(
+                  "Cust ID $customerId",
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Colors.black.withOpacity(0.6),
+                  ),
+                ),
+                const Icon(
+                  Icons.keyboard_arrow_down,
+                  size: 16,
+                  color: Colors.black54,
                 ),
               ],
             ),
