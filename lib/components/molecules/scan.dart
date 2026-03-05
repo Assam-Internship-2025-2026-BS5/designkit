@@ -24,10 +24,10 @@ class Scan extends StatelessWidget {
     this.qrData = "",
     this.imagePath,
     this.icon = Icons.qr_code_2,
-    this.accentColor = const Color(0xFF1E3A8A),
-    this.textColor = const Color(0xFF1E3A8A),
-    this.width = 484,
-    this.height = 180,
+    this.accentColor = const Color(0xFF8B5CF6),
+    this.textColor = const Color(0xFF000000),
+    this.width = 130,
+    this.height = 130,
     this.blur = 15,
     this.opacity = 0.2,
     this.onTap,
@@ -98,6 +98,10 @@ class Scan extends StatelessWidget {
           width: width,
           height: height,
           padding: const EdgeInsets.all(8),
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            color: Color(0xFFE8EEFF),
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

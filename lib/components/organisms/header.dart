@@ -23,62 +23,6 @@ class Header extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-<<<<<<< HEAD
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              // Logo
-              GestureDetector(
-                onTap: () => debugPrint("Logo Tapped"),
-                child: SizedBox(
-                  width: 150,
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Image.asset(
-                      logoPath,
-                      height: 22,
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          // User Info
-          // Hello line
-          GestureDetector(
-            onTap: onProfileTap,
-            behavior: HitTestBehavior.opaque,
-            child: Text(
-              "Hello,",
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.black.withOpacity(0.7),
-              ),
-            ),
-          ),
-          // Name and Notification Row
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child: GestureDetector(
-                  onTap: onProfileTap,
-                  behavior: HitTestBehavior.opaque,
-                  child: Text(
-                    userName.toUpperCase(),
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w900,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-              ),
-              // Notification Icon
-=======
           // Logo Row
           GestureDetector(
             onTap: () => debugPrint("Logo Tapped"),
@@ -95,27 +39,25 @@ class Header extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          // User Info & Notification Row
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              // User Info
->>>>>>> ziaul
-              GestureDetector(
-                onTap: onProfileTap,
-                behavior: HitTestBehavior.opaque,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          // User Info & Notification Integrated
+          GestureDetector(
+            onTap: onProfileTap,
+            behavior: HitTestBehavior.opaque,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Hello,",
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.black.withOpacity(0.7),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                // Notification Icon Between Hello and Name
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "Hello,",
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.black.withOpacity(0.7),
-                      ),
-                    ),
-                    const SizedBox(height: 4),
                     Text(
                       userName.toUpperCase(),
                       style: const TextStyle(
@@ -124,58 +66,32 @@ class Header extends StatelessWidget {
                         color: Colors.black,
                       ),
                     ),
-                  ],
-                ),
-              ),
-              // Notification Icon - Positioned vertically aligned with the space between lines
-              Padding(
-                padding: const EdgeInsets.only(bottom: 2),
-                child: GestureDetector(
-                  onTap: onNotificationTap,
-                  child: Container(
-                    width: 38,
-                    height: 38,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      gradient: LinearGradient(
-                        colors: [Color(0xFFF97316), Color(0xFFFACC15)],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
+                    GestureDetector(
+                      onTap: onNotificationTap,
+                      child: Container(
+                        width: 42,
+                        height: 42,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: LinearGradient(
+                            colors: [Color(0xFFF97316), Color(0xFFFACC15)],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                        ),
+                        child: const Icon(
+                          Icons.notifications_none_outlined,
+                          color: Colors.white,
+                          size: 24,
+                        ),
                       ),
                     ),
-                    child: const Icon(
-                      Icons.notifications_none_outlined,
-                      color: Colors.white,
-                      size: 22,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-<<<<<<< HEAD
-          // Cust ID line
-          GestureDetector(
-            onTap: onProfileTap,
-            behavior: HitTestBehavior.opaque,
-            child: Row(
-              children: [
-                Text(
-                  "Cust ID $customerId",
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.black.withOpacity(0.6),
-                  ),
-                ),
-                const Icon(
-                  Icons.keyboard_arrow_down,
-                  size: 16,
-                  color: Colors.black54,
+                  ],
                 ),
               ],
             ),
-=======
+          ),
+          const SizedBox(height: 8),
           // Cust ID Row
           Row(
             children: [
@@ -192,7 +108,6 @@ class Header extends StatelessWidget {
                 color: Colors.black54,
               ),
             ],
->>>>>>> ziaul
           ),
         ],
       ),

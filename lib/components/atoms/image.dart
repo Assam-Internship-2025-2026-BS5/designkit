@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart' as m;
 
 class Image extends m.StatelessWidget {
-  final double width;
-  final double height;
   final double offsetX;
   final double offsetY;
   final bool showShadow;
@@ -12,8 +10,6 @@ class Image extends m.StatelessWidget {
 
   const Image({
     super.key,
-    this.width = 240.0,
-    this.height = 31.0,
     this.offsetX = 0.0,
     this.offsetY = 0.0,
     this.showShadow = false,
@@ -28,8 +24,6 @@ class Image extends m.StatelessWidget {
       child: m.Transform.translate(
         offset: m.Offset(offsetX, offsetY),
         child: m.Container(
-          width: width,
-          height: height,
           alignment: m.Alignment.center,
           decoration: m.BoxDecoration(
             boxShadow: showShadow

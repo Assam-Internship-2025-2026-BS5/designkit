@@ -34,20 +34,11 @@ class HomePage extends StatelessWidget {
                         onNotificationTap: () => debugPrint("Notification Tapped"),
                         onProfileTap: () => debugPrint("Profile/Customer ID Tapped"),
                       ),
-                      const SizedBox(height: 80), // Reduced space for floating QR
+                      const SizedBox(height: 80), // Space for floating QR Scan
                       // Features Section Re-integrated
                       Stack(
                         clipBehavior: Clip.none,
                         children: [
-<<<<<<< HEAD
-                          Container(
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.9), // More opaque white for the card
-                              borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(40),
-                                topRight: Radius.circular(40),
-=======
                           // Scalloped Background with Blur
                           ClipPath(
                             clipper: ScallopedClipper(),
@@ -60,7 +51,6 @@ class HomePage extends StatelessWidget {
                                   color: Colors.white.withOpacity(0.5),
                                   border: Border.all(color: Colors.transparent), // No standard border
                                 ),
->>>>>>> ziaul
                               ),
                             ),
                           ),
@@ -86,26 +76,6 @@ class HomePage extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-<<<<<<< HEAD
-                                ),
-                                const SizedBox(height: 15),
-                                ActionItems(
-                                  onItemTap: (item) => debugPrint("Action Tapped: ${item.title}"),
-                                ),
-                                const SizedBox(height: 15),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                                  child: PrimaryButton(
-                                    onTap: () => debugPrint("Fingerprint Login Tapped"),
-                                  ),
-                                ),
-                                InlineActionRow(
-                                  onMPINLogin: () => debugPrint("mPIN Login Tapped"),
-                                  onForgotMPIN: () => debugPrint("Forgot mPIN Tapped"),
-                                ),
-                                const SizedBox(height: 60), // Reduced gap to pull content closer
-                              ],
-=======
                                   const SizedBox(height: 30),
                                   ActionItems(
                                     onItemTap: (item) => debugPrint("Action Tapped: ${item.title}"),
@@ -124,7 +94,6 @@ class HomePage extends StatelessWidget {
                                   const SizedBox(height: 20),
                                 ],
                               ),
->>>>>>> ziaul
                             ),
                           ),
                           // Centered Floating QR Button
@@ -171,7 +140,7 @@ class HomePage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNav(
-        backgroundColor: Colors.white.withOpacity(0.9), // Match the main card opacity
+        backgroundColor: Colors.white.withOpacity(0.9),
         onNavTap: (label) => debugPrint("Navigation Tapped: $label"),
       ),
     );
