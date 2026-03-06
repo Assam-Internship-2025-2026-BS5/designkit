@@ -46,25 +46,29 @@ class Header extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "Hello,",
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black.withOpacity(0.7),
-                  ),
-                ),
-                const SizedBox(height: 8),
-                // Notification Icon Between Hello and Name
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      userName.toUpperCase(),
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w900,
-                        color: Colors.black,
-                      ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Hello,",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black.withOpacity(0.7),
+                          ),
+                        ),
+                        const SizedBox(height: 2), // Small gap
+                        Text(
+                          userName.toUpperCase(),
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w900,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
                     ),
                     GestureDetector(
                       onTap: onNotificationTap,
@@ -82,7 +86,7 @@ class Header extends StatelessWidget {
                         child: const Icon(
                           Icons.notifications_none_outlined,
                           color: Colors.white,
-                          size: 24,
+                          size: 22,
                         ),
                       ),
                     ),
