@@ -19,15 +19,17 @@ class ActionItems extends StatefulWidget {
         ActionItemData(
           title: "Send Money",
           imagePath: "assets/Send_money.png",
+          isFullImage: true,
         ),
         ActionItemData(
           title: "Pay Bills",
           imagePath: "assets/Pay_bills.png",
+          isFullImage: true,
         ),
         ActionItemData(
           title: "Product &\nServices",
           imagePath: "assets/Product_services.png",
-          showBadge: true,
+          isFullImage: true,
         ),
       ];
 }
@@ -69,9 +71,9 @@ class _ActionItemsState extends State<ActionItems> {
           children: [
             Container(
               width: 100,
-              height: 130, // Uniform height for all tiles
+              height: 100, // Uniform height for button style
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.9),
+                color: Colors.transparent,
                 borderRadius: BorderRadius.circular(24),
                 boxShadow: [
                   BoxShadow(
@@ -89,52 +91,20 @@ class _ActionItemsState extends State<ActionItems> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const SizedBox(height: 8),
                           ic.Icon(
                             item.icon,
                             imagePath: item.imagePath,
-                            size: 40,
+                            size: 100, // Full size for the button
                             color: item.iconColor,
                           ),
                         ],
                       ),
                     ),
                   ),
-                  // Text Area with fixed bottom alignment
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(24),
-                        bottomRight: Radius.circular(24),
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.02),
-                          blurRadius: 2,
-                          offset: const Offset(0, -1),
-                        ),
-                      ],
-                    ),
-                    child: Text(
-                      item.title,
-                      textAlign: TextAlign.center,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        color: Color(0xFF1F2937),
-                        fontSize: 11, // Adjusted for better fit
-                        fontWeight: FontWeight.w700,
-                        height: 1.1,
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),
-            if (item.showBadge)
+            if (item.showBadge && !item.isFullImage)
               Positioned(
                 top: -10,
                 right: -5,
@@ -178,6 +148,7 @@ class ActionItemData {
   final String? imagePath;
   final Color? iconColor;
   final bool showBadge;
+  final bool isFullImage;
 
   ActionItemData({
     required this.title,
@@ -185,5 +156,6 @@ class ActionItemData {
     this.imagePath,
     this.iconColor,
     this.showBadge = false,
+    this.isFullImage = false,
   });
 }

@@ -7,7 +7,6 @@ class TextButton extends m.StatefulWidget {
   final double fontSize;
   final m.FontWeight fontWeight;
   final bool underline;
-  final double? width;
 
   const TextButton({
     m.Key? key,
@@ -17,7 +16,6 @@ class TextButton extends m.StatefulWidget {
     this.fontSize = 16,
     this.fontWeight = m.FontWeight.normal,
     this.underline = false,
-    this.width,
   }) : super(key: key);
 
   @override
@@ -29,26 +27,23 @@ class _TextButtonState extends m.State<TextButton> {
 
   @override
   m.Widget build(m.BuildContext context) {
-    return m.SizedBox(
-      width: widget.width,
-      child: m.MouseRegion(
-        onEnter: (_) => setState(() => _isHovering = true),
-        onExit: (_) => setState(() => _isHovering = false),
-        cursor: m.SystemMouseCursors.click,
-        child: m.GestureDetector(
-          onTap: widget.onPressed,
-          child: m.AnimatedDefaultTextStyle(
-            duration: const Duration(milliseconds: 200),
-            style: m.TextStyle(
-              color: _isHovering ? widget.color.withOpacity(0.7) : widget.color,
-              fontSize: widget.fontSize,
-              fontWeight: widget.fontWeight,
-              decoration: widget.underline || _isHovering
-                  ? m.TextDecoration.underline
-                  : m.TextDecoration.none,
-            ),
-            child: m.Text(widget.text),
+    return m.MouseRegion(
+      onEnter: (_) => setState(() => _isHovering = true),
+      onExit: (_) => setState(() => _isHovering = false),
+      cursor: m.SystemMouseCursors.click,
+      child: m.GestureDetector(
+        onTap: widget.onPressed,
+        child: m.AnimatedDefaultTextStyle(
+          duration: const Duration(milliseconds: 200),
+          style: m.TextStyle(
+            color: _isHovering ? widget.color.withOpacity(0.7) : widget.color,
+            fontSize: widget.fontSize,
+            fontWeight: widget.fontWeight,
+            decoration: widget.underline || _isHovering
+                ? m.TextDecoration.underline
+                : m.TextDecoration.none,
           ),
+          child: m.Text(widget.text),
         ),
       ),
     );

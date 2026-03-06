@@ -37,7 +37,7 @@ class Image extends m.StatelessWidget {
                 : [],
           ),
           child: m.FittedBox(
-            fit: m.BoxFit.contain,
+            fit: m.BoxFit.fill,
             alignment: m.Alignment.center,
             child: m.Row(
               mainAxisSize: m.MainAxisSize.min,
