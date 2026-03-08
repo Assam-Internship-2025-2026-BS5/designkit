@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
                         onNotificationTap: () => debugPrint("Notification Tapped"),
                         onProfileTap: () => debugPrint("Profile/Customer ID Tapped"),
                       ),
-                      const SizedBox(height: 80), // Space for floating QR Scan
+                      const Spacer(), // Space for floating QR Scan
                       // Features Section Re-integrated
                       Stack(
                         clipBehavior: Clip.none,
@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
                                 width: double.infinity,
                                 constraints: const BoxConstraints(minHeight: 450),
                                 decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.5),
+                                  color: const Color(0xFFE4EBFC).withOpacity(0.6),
                                   border: Border.all(color: Colors.transparent), // No standard border
                                 ),
                               ),
@@ -78,6 +78,8 @@ class HomePage extends StatelessWidget {
                                   ),
                                   const SizedBox(height: 30),
                                   ActionItems(
+                                    itemWidth: 112,
+                                    itemHeight: 112,
                                     onItemTap: (item) => debugPrint("Action Tapped: ${item.title}"),
                                   ),
                                   const SizedBox(height: 30),
@@ -120,7 +122,7 @@ class HomePage extends StatelessWidget {
                                     border: Border.all(color: Colors.white, width: 3),
                                   ),
                                   child: const Scan(
-                                    title: "Scan",
+                                    title: "QR Scan",
                                     imagePath: "assets/Qr_scan.png",
                                     width: 130,
                                     height: 130,
@@ -132,6 +134,7 @@ class HomePage extends StatelessWidget {
                           ),
                         ],
                       ),
+                    const SizedBox(height: 60),
                   ],
                 ),
               ),

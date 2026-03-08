@@ -7,6 +7,7 @@ class GlassContainer extends StatelessWidget {
   final EdgeInsets padding;
   final double opacity;
   final BorderRadius? borderRadius;
+  final Color? borderColor;
 
   const GlassContainer({
     super.key,
@@ -15,6 +16,7 @@ class GlassContainer extends StatelessWidget {
     this.padding = const EdgeInsets.all(20),
     this.opacity = 0.1,
     this.borderRadius,
+    this.borderColor,
   });
 
   @override
@@ -29,7 +31,7 @@ class GlassContainer extends StatelessWidget {
             color: Colors.white.withAlpha((opacity * 255).round()),
             borderRadius: borderRadius ?? BorderRadius.circular(20),
             border: Border.all(
-              color: Colors.white.withAlpha(51), // 0.2 * 255
+              color: borderColor ?? Colors.white.withAlpha(51), // fallback to 0.2 opacity white
               width: 1.5,
             ),
           ),

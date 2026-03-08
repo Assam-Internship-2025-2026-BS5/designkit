@@ -24,40 +24,26 @@ class InlineActionRow extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          GlassCard(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-            borderRadius: 12,
-            opacity: 0.1,
-            blur: 12,
-            showShadow: false,
-            child: GestureDetector(
-              onTap: onMPINLogin,
-              child: Text(
-                mpinText,
-                style: TextStyle(
-                  color: textColor,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 13,
-                ),
+          GestureDetector(
+            onTap: onMPINLogin,
+            child: Text(
+              mpinText,
+              style: TextStyle(
+                color: textColor,
+                fontWeight: FontWeight.w600,
+                fontSize: 14,
               ),
             ),
           ),
-          const SizedBox(width: 16),
-          GlassCard(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-            borderRadius: 12,
-            opacity: 0.1,
-            blur: 12,
-            showShadow: false,
-            child: GestureDetector(
-              onTap: onForgotMPIN,
-              child: Text(
-                forgotMpinText,
-                style: TextStyle(
-                  color: textColor,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 13,
-                ),
+          const SizedBox(width: 80),
+          GestureDetector(
+            onTap: onForgotMPIN,
+            child: Text(
+              forgotMpinText,
+              style: TextStyle(
+                color: textColor,
+                fontWeight: FontWeight.w600,
+                fontSize: 14,
               ),
             ),
           ),

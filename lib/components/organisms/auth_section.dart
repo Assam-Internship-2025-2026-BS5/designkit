@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../atoms/glass_container.dart';
 import '../molecules/primary_button.dart';
+import '../molecules/inline_action_row.dart';
 
 class AuthSection extends StatelessWidget {
   final String fingerprintTitle;
@@ -26,8 +27,8 @@ class AuthSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return GlassContainer(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-      borderRadius: BorderRadius.circular(40),
-      opacity: 0.15,
+      borderRadius: BorderRadius.circular(60),
+      opacity: 0.10,
       blur: 25,
       child: SizedBox(
         width: width,
@@ -38,37 +39,16 @@ class AuthSection extends StatelessWidget {
               title: fingerprintTitle,
               onTap: onFingerprintTap,
               width: width - 48,
+              height: 48,
+              borderRadius: 24, // Fully rounded edges
             ),
-            const SizedBox(height: 28),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  GestureDetector(
-                    onTap: onMPINTap,
-                    child: Text(
-                      mpinText,
-                      style: const TextStyle(
-                        color: Color(0xFF1E3A8A),
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: onForgotMPINTap,
-                    child: Text(
-                      forgotMpinText,
-                      style: const TextStyle(
-                        color: Color(0xFF1E3A8A),
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+            const SizedBox(height: 8),
+            InlineActionRow(
+              mpinText: mpinText,
+              forgotMpinText: forgotMpinText,
+              onMPINLogin: onMPINTap,
+              onForgotMPIN: onForgotMPINTap,
+              textColor: const Color(0xFF1E3A8A),
             ),
           ],
         ),

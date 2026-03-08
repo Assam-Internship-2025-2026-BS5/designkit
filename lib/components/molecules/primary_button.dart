@@ -8,6 +8,7 @@ class PrimaryButton extends StatefulWidget {
   final IconData icon;
   final double width;
   final double height;
+  final double? borderRadius;
   final List<Color>? gradientColors;
   final VoidCallback? onTap;
 
@@ -18,8 +19,9 @@ class PrimaryButton extends StatefulWidget {
     this.imagePath = "",
     this.icon = Icons.fingerprint,
     this.width = 380,
-    this.height = 56,
+    this.height = 48,
     this.gradientColors,
+    this.borderRadius = 24.0,
     this.onTap,
   });
 
@@ -50,7 +52,7 @@ class _PrimaryButtonState extends State<PrimaryButton> {
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
             ),
-            borderRadius: BorderRadius.circular(widget.height / 2),
+            borderRadius: BorderRadius.circular(widget.borderRadius ?? 12.0),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.1),

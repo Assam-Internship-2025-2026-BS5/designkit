@@ -5,11 +5,15 @@ import '../atoms/icon.dart' as ic;
 class ActionItems extends StatefulWidget {
   final List<ActionItemData>? items;
   final Function(ActionItemData)? onItemTap;
+  final double itemWidth;
+  final double itemHeight;
 
   const ActionItems({
     super.key,
     this.items,
     this.onItemTap,
+    this.itemWidth = 100,
+    this.itemHeight = 100,
   });
 
   @override
@@ -41,16 +45,23 @@ class _ActionItemsState extends State<ActionItems> {
   Widget build(BuildContext context) {
     final displayItems = widget.items ?? ActionItems.defaultItems;
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: List.generate(displayItems.length, (index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: _buildActionTile(displayItems[index], index),
-          );
-        }),
+    return GlassContainer(
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 8),
+      borderRadius: BorderRadius.circular(32),
+      opacity: 0.1,
+      blur: 20,
+      borderColor: Colors.grey.withOpacity(0.3), // Light greyish boundary
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(displayItems.length, (index) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: _buildActionTile(displayItems[index], index),
+            );
+          }),
+        ),
       ),
     );
   }
@@ -70,8 +81,8 @@ class _ActionItemsState extends State<ActionItems> {
           clipBehavior: Clip.none,
           children: [
             Container(
-              width: 100,
-              height: 100, // Uniform height for button style
+              width: widget.itemWidth,
+              height: widget.itemHeight, // Uniform height for button style
               decoration: BoxDecoration(
                 color: Colors.transparent,
                 borderRadius: BorderRadius.circular(24),
@@ -94,7 +105,7 @@ class _ActionItemsState extends State<ActionItems> {
                           ic.Icon(
                             item.icon,
                             imagePath: item.imagePath,
-                            size: 100, // Full size for the button
+                            size: widget.itemHeight, // Full size for the button
                             color: item.iconColor,
                           ),
                         ],
