@@ -7,9 +7,14 @@ import '../molecules/primary_button.dart';
 import '../molecules/scan.dart';
 import '../molecules/inline_action_row.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -143,8 +148,14 @@ class HomePage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNav(
-        backgroundColor: Colors.white.withOpacity(0.9),
-        onNavTap: (label) => debugPrint("Navigation Tapped: $label"),
+        items: [
+          BottomNavItemData(icon: Icons.settings, label: "Maintenance"),
+          BottomNavItemData(icon: Icons.help, label: "Reach Us"),
+          BottomNavItemData(icon: Icons.more_horiz, label: "More"),
+        ],
+        onNavTap: (label) {
+          debugPrint("Navigation Tapped: $label");
+        },
       ),
     );
   }
