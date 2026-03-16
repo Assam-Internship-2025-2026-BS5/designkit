@@ -2,48 +2,54 @@ import 'package:flutter/material.dart';
 import '../atoms/glass_card.dart';
 
 class InlineActionRow extends StatelessWidget {
-  final VoidCallback? onMPINLogin;
-  final VoidCallback? onForgotMPIN;
-  final String mpinText;
-  final String forgotMpinText;
+  final VoidCallback? onLeftTap;
+  final VoidCallback? onRightTap;
+  final String leftLabel;
+  final String rightLabel;
   final Color textColor;
+  final double fontSize;
+  final double spacing;
+  final EdgeInsets padding;
 
   const InlineActionRow({
     super.key,
-    this.onMPINLogin,
-    this.onForgotMPIN,
-    this.mpinText = "Or, login with mPIN",
-    this.forgotMpinText = "Forgot mPIN?",
+    this.onLeftTap,
+    this.onRightTap,
+    required this.leftLabel,
+    required this.rightLabel,
     this.textColor = const Color(0xFF1565C0),
+    this.fontSize = 14,
+    this.spacing = 80,
+    this.padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+      padding: padding,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           GestureDetector(
-            onTap: onMPINLogin,
+            onTap: onLeftTap,
             child: Text(
-              mpinText,
+              leftLabel,
               style: TextStyle(
                 color: textColor,
                 fontWeight: FontWeight.w600,
-                fontSize: 14,
+                fontSize: fontSize,
               ),
             ),
           ),
-          const SizedBox(width: 80),
+          SizedBox(width: spacing),
           GestureDetector(
-            onTap: onForgotMPIN,
+            onTap: onRightTap,
             child: Text(
-              forgotMpinText,
+              rightLabel,
               style: TextStyle(
                 color: textColor,
                 fontWeight: FontWeight.w600,
-                fontSize: 14,
+                fontSize: fontSize,
               ),
             ),
           ),

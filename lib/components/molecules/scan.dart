@@ -10,27 +10,31 @@ class Scan extends StatelessWidget {
   final IconData icon;
   final Color accentColor;
   final Color textColor;
+  final Color circleColor;
   final double width;
   final double height;
   final double blur;
   final double opacity;
   final VoidCallback? onTap;
+  final double iconSize;
 
   const Scan({
     super.key,
     required this.title,
     this.subtitle = "",
-    this.popupTitle = "Scan Code",
+    required this.popupTitle,
     this.qrData = "",
     this.imagePath,
     this.icon = Icons.qr_code_2,
     this.accentColor = const Color(0xFF8B5CF6),
     this.textColor = const Color(0xFF000000),
+    this.circleColor = const Color(0xFFE8EEFF),
     this.width = 130,
     this.height = 130,
     this.blur = 15,
     this.opacity = 0.2,
     this.onTap,
+    this.iconSize = 45,
   });
 
   void _showQrPopup(BuildContext context) {
@@ -98,9 +102,9 @@ class Scan extends StatelessWidget {
           width: width,
           height: height,
           padding: const EdgeInsets.all(8),
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: Color(0xFFE8EEFF),
+            color: circleColor,
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -136,7 +140,7 @@ class Scan extends StatelessWidget {
 
   Widget _buildIconTile() {
     return imagePath != null
-        ? Image.asset(imagePath!, width: 45, height: 45)
-        : Icon(icon, size: 45, color: accentColor);
+        ? Image.asset(imagePath!, width: iconSize, height: iconSize)
+        : Icon(icon, size: iconSize, color: accentColor);
   }
 }

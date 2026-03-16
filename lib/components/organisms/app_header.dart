@@ -7,15 +7,21 @@ class AppHeader extends StatelessWidget {
   final double? width;
   final VoidCallback? onNotificationTap;
   final VoidCallback? onProfileTap;
+  final Color backgroundColor;
+  final Color textColor;
+  final List<Color> notificationGradient;
 
   const AppHeader({
     super.key,
-    this.userName = "MHONBENI NGULLIE",
-    this.customerId = "******1010",
-    this.logoPath = "assets/hdfc_logo.png",
+    required this.userName,
+    required this.customerId,
+    required this.logoPath,
     this.width,
     this.onNotificationTap,
     this.onProfileTap,
+    this.backgroundColor = const Color(0xFFC7E2FE),
+    this.textColor = Colors.black,
+    this.notificationGradient = const [Color(0xFFF97316), Color(0xFFFB923C), Color(0xFFFACC15)],
   });
 
   @override
@@ -23,8 +29,8 @@ class AppHeader extends StatelessWidget {
     return Container(
       width: width ?? double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
-      decoration: const BoxDecoration(
-        color: Color(0xFFC7E2FE), // Light sky blue background matching the image
+      decoration: BoxDecoration(
+        color: backgroundColor,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,12 +43,12 @@ class AppHeader extends StatelessWidget {
             fit: BoxFit.contain,
             errorBuilder: (context, error, stackTrace) => Row(
               children: [
-                const Icon(Icons.account_balance, color: Color(0xFF1E3A8A), size: 22),
+                Icon(Icons.account_balance, color: textColor.withOpacity(0.8), size: 22),
                 const SizedBox(width: 8),
                 Text(
-                  "HDFC BANK",
+                  "BRAND LOGO",
                   style: TextStyle(
-                    color: const Color(0xFF1E3A8A),
+                    color: textColor.withOpacity(0.8),
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                   ),
@@ -63,38 +69,41 @@ class AppHeader extends StatelessWidget {
                     "Hello,",
                     style: TextStyle(
                       fontSize: 14,
-                      color: Colors.black.withOpacity(0.5),
+                      color: textColor.withOpacity(0.5),
                       fontWeight: FontWeight.w400,
                     ),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     userName.toUpperCase(),
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w900,
-                      color: Colors.black,
+                      color: textColor,
                       letterSpacing: 0.5,
                     ),
                   ),
                   const SizedBox(height: 12),
-                  Row(
-                    children: [
-                      Text(
-                        "Cust ID $customerId",
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: Colors.black.withOpacity(0.4),
-                          fontWeight: FontWeight.w500,
+                  GestureDetector(
+                    onTap: onProfileTap,
+                    child: Row(
+                      children: [
+                        Text(
+                          "ID $customerId",
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: textColor.withOpacity(0.4),
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 4),
-                      Icon(
-                        Icons.keyboard_arrow_down,
-                        size: 16,
-                        color: Colors.black.withOpacity(0.4),
-                      ),
-                    ],
+                        const SizedBox(width: 4),
+                        Icon(
+                          Icons.keyboard_arrow_down,
+                          size: 16,
+                          color: textColor.withOpacity(0.4),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -104,10 +113,10 @@ class AppHeader extends StatelessWidget {
                 child: Container(
                   width: 48,
                   height: 48,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     gradient: LinearGradient(
-                      colors: [Color(0xFFF97316), Color(0xFFFB923C), Color(0xFFFACC15)],
+                      colors: notificationGradient,
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                     ),
@@ -115,7 +124,7 @@ class AppHeader extends StatelessWidget {
                       BoxShadow(
                         color: Colors.black12,
                         blurRadius: 10,
-                        offset: Offset(0, 4),
+                        offset: const Offset(0, 4),
                       ),
                     ],
                   ),

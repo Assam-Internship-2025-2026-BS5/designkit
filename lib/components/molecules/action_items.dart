@@ -3,39 +3,27 @@ import '../atoms/glass_container.dart';
 import '../atoms/icon.dart' as ic;
 
 class ActionItems extends StatefulWidget {
-  final List<ActionItemData>? items;
+  final List<ActionItemData> items;
   final Function(ActionItemData)? onItemTap;
   final double itemWidth;
   final double itemHeight;
+  final double opacity;
+  final double blur;
+  final Color? borderColor;
 
   const ActionItems({
     super.key,
-    this.items,
+    this.items = const [],
     this.onItemTap,
     this.itemWidth = 100,
     this.itemHeight = 100,
+    this.opacity = 0.1,
+    this.blur = 20,
+    this.borderColor,
   });
 
   @override
   State<ActionItems> createState() => _ActionItemsState();
-
-  static List<ActionItemData> get defaultItems => [
-        ActionItemData(
-          title: "Send Money",
-          imagePath: "assets/Send_money.png",
-          isFullImage: true,
-        ),
-        ActionItemData(
-          title: "Pay Bills",
-          imagePath: "assets/Pay_bills.png",
-          isFullImage: true,
-        ),
-        ActionItemData(
-          title: "Product &\nServices",
-          imagePath: "assets/Product_services.png",
-          isFullImage: true,
-        ),
-      ];
 }
 
 class _ActionItemsState extends State<ActionItems> {
@@ -43,22 +31,22 @@ class _ActionItemsState extends State<ActionItems> {
 
   @override
   Widget build(BuildContext context) {
-    final displayItems = widget.items ?? ActionItems.defaultItems;
+    if (widget.items.isEmpty) return const SizedBox.shrink();
 
     return GlassContainer(
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 8),
       borderRadius: BorderRadius.circular(32),
-      opacity: 0.1,
-      blur: 20,
-      borderColor: Colors.grey.withOpacity(0.3), // Light greyish boundary
+      opacity: widget.opacity,
+      blur: widget.blur,
+      borderColor: widget.borderColor ?? Colors.grey.withOpacity(0.3),
       child: FittedBox(
         fit: BoxFit.scaleDown,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(displayItems.length, (index) {
+          children: List.generate(widget.items.length, (index) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 4),
-              child: _buildActionTile(displayItems[index], index),
+              child: _buildActionTile(widget.items[index], index),
             );
           }),
         ),
@@ -82,7 +70,7 @@ class _ActionItemsState extends State<ActionItems> {
           children: [
             Container(
               width: widget.itemWidth,
-              height: widget.itemHeight, // Uniform height for button style
+              height: widget.itemHeight,
               decoration: BoxDecoration(
                 color: Colors.transparent,
                 borderRadius: BorderRadius.circular(24),
@@ -94,25 +82,13 @@ class _ActionItemsState extends State<ActionItems> {
                   ),
                 ],
               ),
-              child: Column(
-                children: [
-                  // Top section containing icon
-                  Expanded(
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ic.Icon(
-                            item.icon,
-                            imagePath: item.imagePath,
-                            size: widget.itemHeight, // Full size for the button
-                            color: item.iconColor,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+              child: Center(
+                child: ic.Icon(
+                  item.icon,
+                  imagePath: item.imagePath,
+                  size: widget.itemHeight,
+                  color: item.iconColor,
+                ),
               ),
             ),
             if (item.showBadge && !item.isFullImage)
@@ -124,7 +100,7 @@ class _ActionItemsState extends State<ActionItems> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF22C55E), // Green
+                      color: item.badgeColor ?? const Color(0xFF22C55E),
                       borderRadius: BorderRadius.circular(6),
                       boxShadow: [
                         BoxShadow(
@@ -134,9 +110,9 @@ class _ActionItemsState extends State<ActionItems> {
                         ),
                       ],
                     ),
-                    child: const Text(
-                      "OFFER",
-                      style: TextStyle(
+                    child: Text(
+                      item.badgeText ?? "OFFER",
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 8,
                         fontWeight: FontWeight.bold,
@@ -152,7 +128,6 @@ class _ActionItemsState extends State<ActionItems> {
   }
 }
 
-
 class ActionItemData {
   final String title;
   final IconData? icon;
@@ -160,6 +135,8 @@ class ActionItemData {
   final Color? iconColor;
   final bool showBadge;
   final bool isFullImage;
+  final String? badgeText;
+  final Color? badgeColor;
 
   ActionItemData({
     required this.title,
@@ -168,5 +145,7 @@ class ActionItemData {
     this.iconColor,
     this.showBadge = false,
     this.isFullImage = false,
+    this.badgeText,
+    this.badgeColor,
   });
 }

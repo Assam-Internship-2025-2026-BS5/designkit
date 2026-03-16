@@ -9,7 +9,6 @@ class Button extends StatefulWidget {
   final bool disabled;
   final Color buttonColor;
   final bool showOutline;
-  final double blur;
   final double opacity;
 
   final Color textColor;
@@ -22,11 +21,10 @@ class Button extends StatefulWidget {
     this.onTap,
     this.width = 321,
     this.height = 61,
-    this.text = "Know More",
+    required this.text,
     this.disabled = false,
     this.buttonColor = const Color(0xFF5371F9),
     this.showOutline = true,
-    this.blur = 10,
     this.opacity = 0.3,
     this.textColor = Colors.white,
     this.fontSize = 22,
@@ -88,47 +86,41 @@ class _ButtonState extends State<Button>
         onTapCancel: _handleTapCancel,
         child: ScaleTransition(
           scale: _scaleAnimation,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(widget.borderRadius),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: widget.blur, sigmaY: widget.blur),
-              child: Container(
-                width: widget.width,
-                height: widget.height,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      widget.buttonColor.withOpacity(widget.opacity),
-                      widget.buttonColor.withOpacity(widget.opacity * 0.5),
-                    ],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
-                  borderRadius: BorderRadius.circular(widget.borderRadius),
-                  border: widget.showOutline
-                      ? Border.all(
-                          color: Colors.white.withOpacity(0.2),
-                          width: 1,
-                        )
-                      : null,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
-                      offset: const Offset(0, 4),
-                      blurRadius: 10,
-                    ),
-                  ],
+          child: Container(
+            width: widget.width,
+            height: widget.height,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  widget.buttonColor.withOpacity(widget.opacity),
+                  widget.buttonColor.withOpacity(widget.opacity * 0.5),
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: BorderRadius.circular(widget.borderRadius),
+              border: widget.showOutline
+                  ? Border.all(
+                      color: Colors.white.withOpacity(0.2),
+                      width: 1,
+                    )
+                  : null,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  offset: const Offset(0, 4),
+                  blurRadius: 10,
                 ),
-                alignment: Alignment.center,
-                child: Text(
-                  widget.text,
-                  style: TextStyle(
-                    color: widget.textColor,
-                    fontSize: widget.fontSize,
-                    fontWeight: widget.fontWeight,
-                    letterSpacing: 0.5,
-                  ),
-                ),
+              ],
+            ),
+            alignment: Alignment.center,
+            child: Text(
+              widget.text,
+              style: TextStyle(
+                color: widget.textColor,
+                fontSize: widget.fontSize,
+                fontWeight: widget.fontWeight,
+                letterSpacing: 0.5,
               ),
             ),
           ),

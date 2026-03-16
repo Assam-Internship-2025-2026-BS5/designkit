@@ -5,24 +5,28 @@ class PrimaryButton extends StatefulWidget {
   final String title;
   final String subtitle;
   final String imagePath;
-  final IconData icon;
+  final IconData? icon;
   final double width;
   final double height;
   final double? borderRadius;
   final List<Color>? gradientColors;
   final VoidCallback? onTap;
+  final Color textColor;
+  final double fontSize;
 
   const PrimaryButton({
     super.key,
-    this.title = "Login with Fingerprint",
+    required this.title,
     this.subtitle = "",
     this.imagePath = "",
-    this.icon = Icons.fingerprint,
+    this.icon,
     this.width = 380,
     this.height = 48,
     this.gradientColors,
     this.borderRadius = 24.0,
     this.onTap,
+    this.textColor = Colors.white,
+    this.fontSize = 16,
   });
 
   @override
@@ -48,7 +52,7 @@ class _PrimaryButtonState extends State<PrimaryButton> {
           padding: const EdgeInsets.symmetric(horizontal: 24),
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: widget.gradientColors ?? [const Color(0xFF004C8F), const Color(0xFF003366)],
+              colors: widget.gradientColors ?? [const Color(0xFF1E3A8A), const Color(0xFF1E40AF)],
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
             ),
@@ -66,30 +70,34 @@ class _PrimaryButtonState extends State<PrimaryButton> {
             children: [
               Text(
                 widget.title,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
+                style: TextStyle(
+                  color: widget.textColor,
+                  fontSize: widget.fontSize,
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              const SizedBox(width: 12),
-              widget.imagePath.isNotEmpty
-                  ? Image.asset(
-                      widget.imagePath,
-                      width: 28,
-                      height: 28,
-                      color: Colors.white,
-                      errorBuilder: (context, error, stackTrace) => Icon(
+              if (widget.imagePath.isNotEmpty || widget.icon != null) ...[
+                const SizedBox(width: 12),
+                widget.imagePath.isNotEmpty
+                    ? Image.asset(
+                        widget.imagePath,
+                        width: 28,
+                        height: 28,
+                        color: widget.textColor,
+                        errorBuilder: (context, error, stackTrace) => widget.icon != null
+                            ? Icon(
+                                widget.icon,
+                                color: widget.textColor,
+                                size: 28,
+                              )
+                            : const SizedBox.shrink(),
+                      )
+                    : Icon(
                         widget.icon,
-                        color: Colors.white,
+                        color: widget.textColor,
                         size: 28,
                       ),
-                    )
-                  : Icon(
-                      widget.icon,
-                      color: Colors.white,
-                      size: 28,
-                    ),
+              ],
             ],
           ),
         ),

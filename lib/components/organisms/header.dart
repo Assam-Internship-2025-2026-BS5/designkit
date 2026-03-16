@@ -6,14 +6,18 @@ class Header extends StatelessWidget {
   final String logoPath;
   final VoidCallback? onNotificationTap;
   final VoidCallback? onProfileTap;
+  final Color textColor;
+  final List<Color> notificationGradient;
 
   const Header({
     super.key,
-    this.userName = "MHONBENI NGULLIE",
-    this.customerId = "******1010",
-    this.logoPath = "assets/hdfc_logo.png",
+    required this.userName,
+    required this.customerId,
+    required this.logoPath,
     this.onNotificationTap,
     this.onProfileTap,
+    this.textColor = Colors.black,
+    this.notificationGradient = const [Color(0xFFF97316), Color(0xFFFACC15)],
   });
 
   @override
@@ -34,6 +38,14 @@ class Header extends StatelessWidget {
                   logoPath,
                   height: 22,
                   fit: BoxFit.contain,
+                  errorBuilder: (context, error, stackTrace) => Text(
+                    "BRAND LOGO",
+                    style: TextStyle(
+                      color: textColor.withOpacity(0.8),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -56,16 +68,16 @@ class Header extends StatelessWidget {
                           "Hello,",
                           style: TextStyle(
                             fontSize: 14,
-                            color: Colors.black.withOpacity(0.7),
+                            color: textColor.withOpacity(0.7),
                           ),
                         ),
-                        const SizedBox(height: 2), // Small gap
+                        const SizedBox(height: 2),
                         Text(
                           userName.toUpperCase(),
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w900,
-                            color: Colors.black,
+                            color: textColor,
                           ),
                         ),
                       ],
@@ -75,10 +87,10 @@ class Header extends StatelessWidget {
                       child: Container(
                         width: 42,
                         height: 42,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           gradient: LinearGradient(
-                            colors: [Color(0xFFF97316), Color(0xFFFACC15)],
+                            colors: notificationGradient,
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),
@@ -96,20 +108,20 @@ class Header extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          // Cust ID Row
+          // ID Row
           Row(
             children: [
               Text(
-                "Cust ID $customerId",
+                "ID $customerId",
                 style: TextStyle(
                   fontSize: 13,
-                  color: Colors.black.withOpacity(0.6),
+                  color: textColor.withOpacity(0.6),
                 ),
               ),
-              const Icon(
+              Icon(
                 Icons.keyboard_arrow_down,
                 size: 16,
-                color: Colors.black54,
+                color: textColor.withOpacity(0.54),
               ),
             ],
           ),
