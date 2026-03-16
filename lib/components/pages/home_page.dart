@@ -7,7 +7,11 @@ import '../molecules/primary_button.dart';
 import '../molecules/scan.dart';
 import '../molecules/inline_action_row.dart';
 
+<<<<<<< Updated upstream
 class HomePage extends StatefulWidget {
+=======
+class HomePage extends StatelessWidget {
+>>>>>>> Stashed changes
   final String backgroundImage;
   final String userName;
   final String customerId;
@@ -30,6 +34,35 @@ class HomePage extends StatefulWidget {
   final VoidCallback? onRightActionTap;
   final VoidCallback? onScanTap;
   final Function(String)? onNavTap;
+<<<<<<< Updated upstream
+=======
+
+  const HomePage({
+    super.key,
+    this.backgroundImage = 'assets/right_back.png',
+    this.userName = "USER NAME",
+    this.customerId = "00000000",
+    this.logoPath = "assets/hdfc_logo.png",
+    this.featureText = "Frequently used features & special offers at your fingertips",
+    this.actionItems = const [],
+    this.primaryButtonTitle = "Primary Action",
+    this.primaryButtonImagePath,
+    this.primaryButtonIcon,
+    this.leftActionLabel = "Left Action",
+    this.rightActionLabel = "Right Action",
+    this.scanTitle = "Scan",
+    this.scanPopupTitle = "Scan Code",
+    this.scanImagePath = "assets/Qr_scan.png",
+    this.navItems = const [],
+    this.onNotificationTap,
+    this.onProfileTap,
+    this.onPrimaryButtonTap,
+    this.onLeftActionTap,
+    this.onRightActionTap,
+    this.onScanTap,
+    this.onNavTap,
+  });
+>>>>>>> Stashed changes
 
   const HomePage({
     super.key,
@@ -71,7 +104,11 @@ class _HomePageState extends State<HomePage> {
         height: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
+<<<<<<< Updated upstream
             image: AssetImage(widget.backgroundImage),
+=======
+            image: AssetImage(backgroundImage),
+>>>>>>> Stashed changes
             fit: BoxFit.cover,
           ),
         ),
@@ -83,11 +120,19 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   children: [
                     Header(
+<<<<<<< Updated upstream
                       userName: widget.userName,
                       customerId: widget.customerId,
                       logoPath: widget.logoPath,
                       onNotificationTap: widget.onNotificationTap,
                       onProfileTap: widget.onProfileTap,
+=======
+                      userName: userName,
+                      customerId: customerId,
+                      logoPath: logoPath,
+                      onNotificationTap: onNotificationTap,
+                      onProfileTap: onProfileTap,
+>>>>>>> Stashed changes
                     ),
                     const Spacer(),
                     Stack(
@@ -117,7 +162,11 @@ class _HomePageState extends State<HomePage> {
                                 Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 40),
                                   child: Text(
+<<<<<<< Updated upstream
                                     widget.featureText,
+=======
+                                    featureText,
+>>>>>>> Stashed changes
                                     textAlign: TextAlign.center,
                                     style: const TextStyle(
                                       color: Color(0xFF374151),
@@ -129,7 +178,11 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 const SizedBox(height: 30),
                                 ActionItems(
+<<<<<<< Updated upstream
                                   items: widget.actionItems,
+=======
+                                  items: actionItems,
+>>>>>>> Stashed changes
                                   itemWidth: 112,
                                   itemHeight: 112,
                                   onItemTap: (item) => debugPrint("Action Tapped: ${item.title}"),
@@ -138,6 +191,7 @@ class _HomePageState extends State<HomePage> {
                                 Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 16),
                                   child: PrimaryButton(
+<<<<<<< Updated upstream
                                     title: widget.primaryButtonTitle,
                                     imagePath: widget.primaryButtonImagePath ?? "",
                                     icon: widget.primaryButtonIcon,
@@ -149,6 +203,19 @@ class _HomePageState extends State<HomePage> {
                                   rightLabel: widget.rightActionLabel,
                                   onLeftTap: widget.onLeftActionTap,
                                   onRightTap: widget.onRightActionTap,
+=======
+                                    title: primaryButtonTitle,
+                                    imagePath: primaryButtonImagePath ?? "",
+                                    icon: primaryButtonIcon,
+                                    onTap: onPrimaryButtonTap,
+                                  ),
+                                ),
+                                InlineActionRow(
+                                  leftLabel: leftActionLabel,
+                                  rightLabel: rightActionLabel,
+                                  onLeftTap: onLeftActionTap,
+                                  onRightTap: onRightActionTap,
+>>>>>>> Stashed changes
                                 ),
                                 const SizedBox(height: 20),
                               ],
@@ -161,7 +228,11 @@ class _HomePageState extends State<HomePage> {
                           right: 0,
                           child: Center(
                             child: GestureDetector(
+<<<<<<< Updated upstream
                               onTap: widget.onScanTap,
+=======
+                              onTap: onScanTap,
+>>>>>>> Stashed changes
                               child: Container(
                                 width: 130,
                                 height: 130,
@@ -178,9 +249,15 @@ class _HomePageState extends State<HomePage> {
                                   border: Border.all(color: Colors.white, width: 3),
                                 ),
                                 child: Scan(
+<<<<<<< Updated upstream
                                   title: widget.scanTitle,
                                   popupTitle: widget.scanPopupTitle,
                                   imagePath: widget.scanImagePath,
+=======
+                                  title: scanTitle,
+                                  popupTitle: scanPopupTitle,
+                                  imagePath: scanImagePath,
+>>>>>>> Stashed changes
                                   width: 130,
                                   height: 130,
                                   textColor: const Color(0xFF1E3A8A),
@@ -200,9 +277,15 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       bottomNavigationBar: BottomNav(
+<<<<<<< Updated upstream
         items: widget.navItems,
         backgroundColor: Colors.white.withOpacity(0.8),
         onNavTap: widget.onNavTap,
+=======
+        items: navItems,
+        backgroundColor: Colors.white.withOpacity(0.8),
+        onNavTap: onNavTap,
+>>>>>>> Stashed changes
       ),
     );
   }
