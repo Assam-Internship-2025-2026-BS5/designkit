@@ -7,11 +7,7 @@ import '../molecules/primary_button.dart';
 import '../molecules/scan.dart';
 import '../molecules/inline_action_row.dart';
 
-<<<<<<< Updated upstream
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-=======
-class HomePage extends StatelessWidget {
   final String backgroundImage;
   final String userName;
   final String customerId;
@@ -60,7 +56,6 @@ class HomePage extends StatelessWidget {
     this.onScanTap,
     this.onNavTap,
   });
->>>>>>> Stashed changes
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -76,7 +71,7 @@ class _HomePageState extends State<HomePage> {
         height: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(backgroundImage),
+            image: AssetImage(widget.backgroundImage),
             fit: BoxFit.cover,
           ),
         ),
@@ -88,11 +83,11 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   children: [
                     Header(
-                      userName: userName,
-                      customerId: customerId,
-                      logoPath: logoPath,
-                      onNotificationTap: onNotificationTap,
-                      onProfileTap: onProfileTap,
+                      userName: widget.userName,
+                      customerId: widget.customerId,
+                      logoPath: widget.logoPath,
+                      onNotificationTap: widget.onNotificationTap,
+                      onProfileTap: widget.onProfileTap,
                     ),
                     const Spacer(),
                     Stack(
@@ -122,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                                 Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 40),
                                   child: Text(
-                                    featureText,
+                                    widget.featureText,
                                     textAlign: TextAlign.center,
                                     style: const TextStyle(
                                       color: Color(0xFF374151),
@@ -134,7 +129,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 const SizedBox(height: 30),
                                 ActionItems(
-                                  items: actionItems,
+                                  items: widget.actionItems,
                                   itemWidth: 112,
                                   itemHeight: 112,
                                   onItemTap: (item) => debugPrint("Action Tapped: ${item.title}"),
@@ -143,17 +138,17 @@ class _HomePageState extends State<HomePage> {
                                 Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 16),
                                   child: PrimaryButton(
-                                    title: primaryButtonTitle,
-                                    imagePath: primaryButtonImagePath ?? "",
-                                    icon: primaryButtonIcon,
-                                    onTap: onPrimaryButtonTap,
+                                    title: widget.primaryButtonTitle,
+                                    imagePath: widget.primaryButtonImagePath ?? "",
+                                    icon: widget.primaryButtonIcon,
+                                    onTap: widget.onPrimaryButtonTap,
                                   ),
                                 ),
                                 InlineActionRow(
-                                  leftLabel: leftActionLabel,
-                                  rightLabel: rightActionLabel,
-                                  onLeftTap: onLeftActionTap,
-                                  onRightTap: onRightActionTap,
+                                  leftLabel: widget.leftActionLabel,
+                                  rightLabel: widget.rightActionLabel,
+                                  onLeftTap: widget.onLeftActionTap,
+                                  onRightTap: widget.onRightActionTap,
                                 ),
                                 const SizedBox(height: 20),
                               ],
@@ -166,7 +161,7 @@ class _HomePageState extends State<HomePage> {
                           right: 0,
                           child: Center(
                             child: GestureDetector(
-                              onTap: onScanTap,
+                              onTap: widget.onScanTap,
                               child: Container(
                                 width: 130,
                                 height: 130,
@@ -183,9 +178,9 @@ class _HomePageState extends State<HomePage> {
                                   border: Border.all(color: Colors.white, width: 3),
                                 ),
                                 child: Scan(
-                                  title: scanTitle,
-                                  popupTitle: scanPopupTitle,
-                                  imagePath: scanImagePath,
+                                  title: widget.scanTitle,
+                                  popupTitle: widget.scanPopupTitle,
+                                  imagePath: widget.scanImagePath,
                                   width: 130,
                                   height: 130,
                                   textColor: const Color(0xFF1E3A8A),
@@ -205,20 +200,9 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       bottomNavigationBar: BottomNav(
-<<<<<<< Updated upstream
-        items: [
-          BottomNavItemData(icon: Icons.settings, label: "Maintenance"),
-          BottomNavItemData(icon: Icons.help, label: "Reach Us"),
-          BottomNavItemData(icon: Icons.more_horiz, label: "More"),
-        ],
-        onNavTap: (label) {
-          debugPrint("Navigation Tapped: $label");
-        },
-=======
-        items: navItems,
+        items: widget.navItems,
         backgroundColor: Colors.white.withOpacity(0.8),
-        onNavTap: onNavTap,
->>>>>>> Stashed changes
+        onNavTap: widget.onNavTap,
       ),
     );
   }
