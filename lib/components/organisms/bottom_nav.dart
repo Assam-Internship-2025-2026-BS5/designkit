@@ -5,10 +5,7 @@ import '../atoms/text.dart' as atom;
 class BottomNav extends StatelessWidget {
   final Function(String)? onNavTap;
   final List<BottomNavItemData> items;
-<<<<<<< Updated upstream
   final TextStyle? textStyle;
-=======
->>>>>>> Stashed changes
   final Color backgroundColor;
   final Color activeColor;
   final Color inactiveColor;
@@ -19,19 +16,12 @@ class BottomNav extends StatelessWidget {
     super.key,
     this.onNavTap,
     this.items = const [],
-<<<<<<< Updated upstream
     this.textStyle,
-=======
->>>>>>> Stashed changes
     this.backgroundColor = Colors.white,
     this.activeColor = const Color(0xFF003366),
     this.inactiveColor = const Color(0xFF4B5563),
     this.textColor = Colors.black,
-<<<<<<< Updated upstream
     this.padding = const EdgeInsets.only(top: 15, bottom: 35),
-=======
-    this.padding = const EdgeInsets.only(top: 12, bottom: 35),
->>>>>>> Stashed changes
   });
 
   @override
@@ -50,11 +40,7 @@ class BottomNav extends StatelessWidget {
       ),
       padding: padding,
       child: Row(
-<<<<<<< Updated upstream
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-=======
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
->>>>>>> Stashed changes
         children: items.map((item) => _buildBottomNavItem(item)).toList(),
       ),
     );
@@ -73,13 +59,8 @@ class BottomNav extends StatelessWidget {
             const SizedBox(width: 6),
             atom.Text(
               text: item.label,
-<<<<<<< Updated upstream
               fontSize: textStyle?.fontSize ?? 14,
               fontWeight: textStyle?.fontWeight ?? FontWeight.w600,
-=======
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
->>>>>>> Stashed changes
               color: textColor,
             ),
           ],

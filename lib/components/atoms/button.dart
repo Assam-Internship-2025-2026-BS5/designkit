@@ -8,11 +8,7 @@ class Button extends StatefulWidget {
   final String text;
   final bool disabled;
   final Color buttonColor;
-<<<<<<< Updated upstream
   final bool isSingleColor;
-=======
-  final bool showOutline;
->>>>>>> Stashed changes
   final double opacity;
 
   final Color textColor;
@@ -29,13 +25,8 @@ class Button extends StatefulWidget {
     required this.text,
     this.disabled = false,
     this.buttonColor = const Color(0xFF5371F9),
-<<<<<<< Updated upstream
     this.isSingleColor = false,
     this.opacity = 0.8,
-=======
-    this.showOutline = true,
-    this.opacity = 0.3,
->>>>>>> Stashed changes
     this.textColor = Colors.white,
     this.fontSize = 22,
     this.fontWeight = FontWeight.w600,
@@ -101,7 +92,6 @@ class _ButtonState extends State<Button>
             width: widget.width,
             height: widget.height,
             decoration: BoxDecoration(
-<<<<<<< Updated upstream
               color: widget.isSingleColor
                   ? widget.buttonColor.withOpacity(widget.opacity)
                   : null,
@@ -116,29 +106,11 @@ class _ButtonState extends State<Button>
                       end: Alignment.centerLeft,
                     ),
               borderRadius: BorderRadius.circular(widget.borderRadius),
-=======
-              gradient: LinearGradient(
-                colors: [
-                  widget.buttonColor.withOpacity(widget.opacity),
-                  widget.buttonColor.withOpacity(widget.opacity * 0.5),
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-              borderRadius: BorderRadius.circular(widget.borderRadius),
-              border: widget.showOutline
-                  ? Border.all(
-                      color: Colors.white.withOpacity(0.2),
-                      width: 1,
-                    )
-                  : null,
->>>>>>> Stashed changes
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.1),
                   offset: const Offset(0, 4),
                   blurRadius: 10,
-<<<<<<< Updated upstream
                 ),
               ],
             ),
@@ -165,20 +137,6 @@ class _ButtonState extends State<Button>
                   ),
                 ],
               ],
-=======
-                ),
-              ],
-            ),
-            alignment: Alignment.center,
-            child: Text(
-              widget.text,
-              style: TextStyle(
-                color: widget.textColor,
-                fontSize: widget.fontSize,
-                fontWeight: widget.fontWeight,
-                letterSpacing: 0.5,
-              ),
->>>>>>> Stashed changes
             ),
           ),
         ),
