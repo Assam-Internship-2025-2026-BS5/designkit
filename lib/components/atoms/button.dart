@@ -16,6 +16,8 @@ class Button extends StatefulWidget {
   final FontWeight fontWeight;
   final double borderRadius;
   final bool showFingerprint;
+  final bool showForwardArrow;
+  final bool showBackwardArrow;
 
   const Button({
     super.key,
@@ -32,6 +34,8 @@ class Button extends StatefulWidget {
     this.fontWeight = FontWeight.w600,
     this.borderRadius = 20,
     this.showFingerprint = false,
+    this.showForwardArrow = false,
+    this.showBackwardArrow = false,
   });
 
   @override
@@ -119,6 +123,14 @@ class _ButtonState extends State<Button>
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                if (widget.showBackwardArrow) ...[
+                  Icon(
+                    Icons.chevron_left_rounded,
+                    color: widget.textColor,
+                    size: widget.fontSize * 1.4,
+                  ),
+                  const SizedBox(width: 8),
+                ],
                 Text(
                   widget.text,
                   style: TextStyle(
@@ -132,6 +144,14 @@ class _ButtonState extends State<Button>
                   const SizedBox(width: 12),
                   Icon(
                     Icons.fingerprint,
+                    color: widget.textColor,
+                    size: widget.fontSize * 1.4,
+                  ),
+                ],
+                if (widget.showForwardArrow) ...[
+                  const SizedBox(width: 8),
+                  Icon(
+                    Icons.chevron_right_rounded,
                     color: widget.textColor,
                     size: widget.fontSize * 1.4,
                   ),
