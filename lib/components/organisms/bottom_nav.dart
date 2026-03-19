@@ -30,7 +30,7 @@ class BottomNav extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: backgroundColor,
         border: Border(
           top: BorderSide(
             color: Colors.black.withOpacity(0.08),
@@ -41,29 +41,74 @@ class BottomNav extends StatelessWidget {
       padding: padding,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: items.map((item) => _buildBottomNavItem(item)).toList(),
+        children: items.map((item) => _BottomNavItem(
+          item: item,
+          onNavTap: onNavTap,
+          activeColor: activeColor,
+          textColor: textColor,
+          fontSize: textStyle?.fontSize ?? 14,
+          fontWeight: textStyle?.fontWeight ?? FontWeight.w600,
+        )).toList(),
       ),
     );
   }
+}
 
-  Widget _buildBottomNavItem(BottomNavItemData item) {
+class _BottomNavItem extends StatefulWidget {
+  final BottomNavItemData item;
+  final Function(String)? onNavTap;
+  final Color activeColor;
+  final Color textColor;
+  final double fontSize;
+  final FontWeight fontWeight;
+
+  const _BottomNavItem({
+    required this.item,
+    this.onNavTap,
+    required this.activeColor,
+    required this.textColor,
+    required this.fontSize,
+    required this.fontWeight,
+  });
+
+  @override
+  State<_BottomNavItem> createState() => _BottomNavItemState();
+}
+
+class _BottomNavItemState extends State<_BottomNavItem> {
+  bool _isPressed = false;
+
+  @override
+  Widget build(BuildContext context) {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
-      onTap: () => onNavTap?.call(item.label),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            atom.Icon(item.icon, size: 24, color: activeColor),
-            const SizedBox(width: 6),
-            atom.Text(
-              text: item.label,
-              fontSize: textStyle?.fontSize ?? 14,
-              fontWeight: textStyle?.fontWeight ?? FontWeight.w600,
-              color: textColor,
-            ),
-          ],
+      onTapDown: (_) => setState(() => _isPressed = true),
+      onTapUp: (_) => setState(() => _isPressed = false),
+      onTapCancel: () => setState(() => _isPressed = false),
+      onTap: () => widget.onNavTap?.call(widget.item.label),
+      child: AnimatedScale(
+        scale: _isPressed ? 0.92 : 1.0,
+        duration: const Duration(milliseconds: 100),
+        curve: Curves.easeOut,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            color: _isPressed ? widget.activeColor.withOpacity(0.05) : Colors.transparent,
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              atom.Icon(widget.item.icon, size: 24, color: widget.activeColor),
+              const SizedBox(width: 6),
+              atom.Text(
+                text: widget.item.label,
+                fontSize: widget.fontSize,
+                fontWeight: widget.fontWeight,
+                color: widget.textColor,
+              ),
+            ],
+          ),
         ),
       ),
     );
