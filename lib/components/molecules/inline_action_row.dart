@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../atoms/glass_card.dart';
 
 class InlineActionRow extends StatelessWidget {
   final VoidCallback? onLeftTap;
@@ -30,26 +29,42 @@ class InlineActionRow extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          GestureDetector(
-            onTap: onLeftTap,
-            child: Text(
-              leftLabel,
-              style: TextStyle(
-                color: textColor,
-                fontWeight: FontWeight.w600,
-                fontSize: fontSize,
+          Material(
+            color: Colors.transparent,
+            child: InkWell(
+              onTap: onLeftTap,
+              mouseCursor: SystemMouseCursors.click,
+              borderRadius: BorderRadius.circular(4),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                child: Text(
+                  leftLabel,
+                  style: TextStyle(
+                    color: textColor,
+                    fontWeight: FontWeight.w600,
+                    fontSize: fontSize,
+                  ),
+                ),
               ),
             ),
           ),
           SizedBox(width: spacing),
-          GestureDetector(
-            onTap: onRightTap,
-            child: Text(
-              rightLabel,
-              style: TextStyle(
-                color: textColor,
-                fontWeight: FontWeight.w600,
-                fontSize: fontSize,
+          Material(
+            color: Colors.transparent,
+            child: InkWell(
+              onTap: onRightTap,
+              mouseCursor: SystemMouseCursors.click,
+              borderRadius: BorderRadius.circular(4),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                child: Text(
+                  rightLabel,
+                  style: TextStyle(
+                    color: textColor,
+                    fontWeight: FontWeight.w600,
+                    fontSize: fontSize,
+                  ),
+                ),
               ),
             ),
           ),
