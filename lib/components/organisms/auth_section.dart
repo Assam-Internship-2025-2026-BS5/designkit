@@ -15,6 +15,7 @@ class AuthSection extends StatelessWidget {
   final double blur;
   final double borderRadius;
   final Color actionTextColor;
+  final bool showFingerprint;
 
   const AuthSection({
     super.key,
@@ -29,6 +30,7 @@ class AuthSection extends StatelessWidget {
     this.blur = 25,
     this.borderRadius = 60,
     this.actionTextColor = const Color(0xFF1E3A8A),
+    this.showFingerprint = false,
   });
 
   @override
@@ -49,6 +51,7 @@ class AuthSection extends StatelessWidget {
               width: width - 48,
               height: 48,
               borderRadius: 24,
+              icon: showFingerprint ? Icons.fingerprint : null,
             ),
             const SizedBox(height: 8),
             InlineActionRow(
