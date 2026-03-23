@@ -93,15 +93,15 @@ class _HomePageState extends State<HomePage> {
                     Stack(
                       clipBehavior: Clip.none,
                       children: [
-                        ClipPath(
-                          clipper: ScallopedClipper(),
-                          child: BackdropFilter(
-                            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                            child: Container(
-                              width: double.infinity,
-                              constraints: const BoxConstraints(minHeight: 450),
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFE4EBFC).withOpacity(0.6),
+                        Positioned.fill(
+                          child: ClipPath(
+                            clipper: ScallopedClipper(),
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFFE4EBFC).withOpacity(0.6),
+                                ),
                               ),
                             ),
                           ),
@@ -110,7 +110,6 @@ class _HomePageState extends State<HomePage> {
                           painter: ScallopedBorderPainter(),
                           child: Container(
                             width: double.infinity,
-                            constraints: const BoxConstraints(minHeight: 450),
                             child: Column(
                               children: [
                                 const SizedBox(height: 90),
@@ -150,7 +149,7 @@ class _HomePageState extends State<HomePage> {
                                   onLeftTap: widget.onLeftActionTap,
                                   onRightTap: widget.onRightActionTap,
                                 ),
-                                const SizedBox(height: 20),
+                                const SizedBox(height: 75),
                               ],
                             ),
                           ),
@@ -191,7 +190,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 60),
+                    // Removed gap for seamless connection
                   ],
                 ),
               ),

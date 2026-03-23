@@ -8,7 +8,6 @@ class BottomNav extends StatelessWidget {
   final TextStyle? textStyle;
   final Color backgroundColor;
   final Color activeColor;
-  final Color inactiveColor;
   final Color textColor;
   final EdgeInsets padding;
 
@@ -19,9 +18,8 @@ class BottomNav extends StatelessWidget {
     this.textStyle,
     this.backgroundColor = Colors.white,
     this.activeColor = const Color(0xFF003366),
-    this.inactiveColor = const Color(0xFF4B5563),
     this.textColor = Colors.black,
-    this.padding = const EdgeInsets.only(top: 15, bottom: 35),
+    this.padding = const EdgeInsets.only(top: 10, bottom: 5),
   });
 
   @override
