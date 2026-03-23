@@ -68,12 +68,16 @@ class _PrimaryButtonState extends State<PrimaryButton> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                widget.title,
-                style: TextStyle(
-                  color: widget.textColor,
-                  fontSize: widget.fontSize,
-                  fontWeight: FontWeight.w600,
+              Flexible(
+                child: Text(
+                  widget.title,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  style: TextStyle(
+                    color: widget.textColor,
+                    fontSize: widget.fontSize,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
               if (widget.imagePath.isNotEmpty || widget.icon != null) ...[

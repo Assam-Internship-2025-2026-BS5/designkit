@@ -85,9 +85,16 @@ class _HomePageState extends State<HomePage> {
                     Header(
                       userName: widget.userName,
                       customerId: widget.customerId,
+                      customerIds: const [
+                        "******1010",
+                        "******2020",
+                        "******3030",
+                        "******4040",
+                      ],
                       logoPath: widget.logoPath,
                       onNotificationTap: widget.onNotificationTap,
                       onProfileTap: widget.onProfileTap,
+                      onIdChanged: (newId) => debugPrint("New ID selected: $newId"),
                     ),
                     const Spacer(),
                     Stack(
@@ -133,7 +140,7 @@ class _HomePageState extends State<HomePage> {
                                   itemHeight: 112,
                                   onItemTap: (item) => debugPrint("Action Tapped: ${item.title}"),
                                 ),
-                                const SizedBox(height: 30),
+                                const SizedBox(height: 60),
                                 Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 16),
                                   child: PrimaryButton(
@@ -149,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                                   onLeftTap: widget.onLeftActionTap,
                                   onRightTap: widget.onRightActionTap,
                                 ),
-                                const SizedBox(height: 75),
+                                const SizedBox(height: 45),
                               ],
                             ),
                           ),

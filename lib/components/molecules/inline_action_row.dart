@@ -29,40 +29,51 @@ class InlineActionRow extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Material(
-            color: Colors.transparent,
-            child: InkWell(
-              onTap: onLeftTap,
-              mouseCursor: SystemMouseCursors.click,
-              borderRadius: BorderRadius.circular(4),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                child: Text(
-                  leftLabel,
-                  style: TextStyle(
-                    color: textColor,
-                    fontWeight: FontWeight.w600,
-                    fontSize: fontSize,
+          Flexible(
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: onLeftTap,
+                mouseCursor: SystemMouseCursors.click,
+                borderRadius: BorderRadius.circular(4),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                  child: Text(
+                    leftLabel,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: textColor,
+                      fontWeight: FontWeight.w600,
+                      fontSize: fontSize,
+                    ),
                   ),
                 ),
               ),
             ),
           ),
-          SizedBox(width: spacing),
-          Material(
-            color: Colors.transparent,
-            child: InkWell(
-              onTap: onRightTap,
-              mouseCursor: SystemMouseCursors.click,
-              borderRadius: BorderRadius.circular(4),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                child: Text(
-                  rightLabel,
-                  style: TextStyle(
-                    color: textColor,
-                    fontWeight: FontWeight.w600,
-                    fontSize: fontSize,
+          Flexible(
+            flex: 0,
+            child: SizedBox(
+              width: spacing.clamp(0.0, double.infinity),
+            ),
+          ),
+          Flexible(
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: onRightTap,
+                mouseCursor: SystemMouseCursors.click,
+                borderRadius: BorderRadius.circular(4),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                  child: Text(
+                    rightLabel,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: textColor,
+                      fontWeight: FontWeight.w600,
+                      fontSize: fontSize,
+                    ),
                   ),
                 ),
               ),
