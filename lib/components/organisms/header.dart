@@ -38,8 +38,18 @@ class _HeaderState extends State<Header> {
   }
 
   @override
+  void didUpdateWidget(Header oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.customerId != widget.customerId) {
+      setState(() {
+        _selectedId = widget.customerId;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final List<String> idList = widget.customerIds ?? [_selectedId];
+    final List<String> idList = List<String>.from(widget.customerIds ?? [_selectedId]);
     if (!idList.contains(_selectedId)) {
       idList.insert(0, _selectedId);
     }

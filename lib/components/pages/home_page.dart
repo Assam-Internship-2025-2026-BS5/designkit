@@ -30,6 +30,7 @@ class HomePage extends StatefulWidget {
   final VoidCallback? onRightActionTap;
   final VoidCallback? onScanTap;
   final Function(String)? onNavTap;
+  final ValueChanged<String>? onIdChanged;
 
   const HomePage({
     super.key,
@@ -55,6 +56,7 @@ class HomePage extends StatefulWidget {
     this.onRightActionTap,
     this.onScanTap,
     this.onNavTap,
+    this.onIdChanged,
   });
 
   @override
@@ -94,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                       logoPath: widget.logoPath,
                       onNotificationTap: widget.onNotificationTap,
                       onProfileTap: widget.onProfileTap,
-                      onIdChanged: (newId) => debugPrint("New ID selected: $newId"),
+                      onIdChanged: widget.onIdChanged,
                     ),
                     const Spacer(),
                     Stack(
