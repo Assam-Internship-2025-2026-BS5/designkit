@@ -117,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         CustomPaint(
                           painter: ScallopedBorderPainter(),
-                          child: Container(
+                          child: SizedBox(
                             width: double.infinity,
                             child: Column(
                               children: [
